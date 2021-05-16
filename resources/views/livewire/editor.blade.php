@@ -7,7 +7,7 @@
     </div>
     <div class="w-96 h-full flex flex-col">
         <div class="text-center py-3">Token List</div>
-        <ul class="list-disc pl-5 space-y-5 overflow-y-scroll">
+        <ul class="list-disc pl-5 space-y-5 overflow-y-scroll flex-grow">
             @foreach ($tokens as $token)
                 <li>
                     @switch (get_class($token))
@@ -39,7 +39,7 @@
     </div>
     <div class="w-96 h-full flex flex-col">
         <div class="text-center py-3">Pseudo-highlighted</div>
-        <div class="text-0 overflow-y-scroll">
+        <div class="text-0 overflow-y-scroll flex-grow">
             @foreach ($tokens as $token)
                 @switch (get_class($token))
                     @case(JamesWildDev\DBMLParser\Tokenization\Logging\TokenEvent::class)
