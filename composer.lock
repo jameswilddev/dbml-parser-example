@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "11129877ae682808dde6c4373ece4e68",
+    "content-hash": "3c6ed684512ca29ae00f1146206ae4cf",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -862,12 +862,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jameswilddev/dbml-parser.git",
-                "reference": "64827a4408a57e1f75442b7d732bd6bcf1075be0"
+                "reference": "31dd7cf35578f912768733c18f8b709ba4280c69"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jameswilddev/dbml-parser/zipball/64827a4408a57e1f75442b7d732bd6bcf1075be0",
-                "reference": "64827a4408a57e1f75442b7d732bd6bcf1075be0",
+                "url": "https://api.github.com/repos/jameswilddev/dbml-parser/zipball/31dd7cf35578f912768733c18f8b709ba4280c69",
+                "reference": "31dd7cf35578f912768733c18f8b709ba4280c69",
                 "shasum": ""
             },
             "require": {
@@ -899,7 +899,7 @@
                 "issues": "https://github.com/jameswilddev/dbml-parser/issues",
                 "source": "https://github.com/jameswilddev/dbml-parser/tree/master"
             },
-            "time": "2021-05-16T18:24:54+00:00"
+            "time": "2021-05-16T19:31:23+00:00"
         },
         {
             "name": "laravel/framework",
@@ -7453,7 +7453,8 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.3|^8.0"
+        "php": "^7.3|^8.0",
+        "ext-mbstring": "^8.0"
     },
     "platform-dev": [],
     "plugin-api-version": "2.0.0"
