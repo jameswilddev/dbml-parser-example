@@ -1,13 +1,13 @@
-<div class="flex flex-row space-x-5 h-screen overflow-y-hidden overflow-x-scroll">
-    <div class="w-96 h-full flex flex-col">
+<div class="flex flex-row space-x-5 h-screen overflow-y-hidden overflow-x-auto">
+    <div class="w-96 h-full flex flex-col flex-shrink-0">
         <div class="text-center py-3">DBML Editor</div>
         <div class="flex-grow">
             <textarea wire:model="dbml" class="w-full h-full resize-none"></textarea>
         </div>
     </div>
-    <div class="w-96 h-full flex flex-col">
+    <div class="w-96 h-full flex flex-col flex-shrink-0">
         <div class="text-center py-3">Token List</div>
-        <ul class="list-disc pl-5 space-y-5 overflow-y-scroll flex-grow">
+        <ul class="list-disc pl-5 space-y-5 overflow-y-auto flex-grow">
             @foreach ($tokens as $token)
                 <li>
                     @switch (get_class($token))
@@ -37,9 +37,9 @@
             @endforeach
         </ul>
     </div>
-    <div class="w-96 h-full flex flex-col">
+    <div class="w-96 h-full flex flex-col flex-shrink-0">
         <div class="text-center py-3">Pseudo-highlighted</div>
-        <div class="text-0 overflow-y-scroll flex-grow">
+        <div class="text-0 overflow-y-auto flex-grow">
             @foreach ($tokens as $token)
                 @switch (get_class($token))
                     @case(JamesWildDev\DBMLParser\Tokenization\Logging\TokenEvent::class)
