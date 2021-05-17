@@ -862,12 +862,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jameswilddev/dbml-parser.git",
-                "reference": "31dd7cf35578f912768733c18f8b709ba4280c69"
+                "reference": "3dde21c1ab1583512cfc312732b60747c89c21f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jameswilddev/dbml-parser/zipball/31dd7cf35578f912768733c18f8b709ba4280c69",
-                "reference": "31dd7cf35578f912768733c18f8b709ba4280c69",
+                "url": "https://api.github.com/repos/jameswilddev/dbml-parser/zipball/3dde21c1ab1583512cfc312732b60747c89c21f0",
+                "reference": "3dde21c1ab1583512cfc312732b60747c89c21f0",
                 "shasum": ""
             },
             "require": {
@@ -899,7 +899,7 @@
                 "issues": "https://github.com/jameswilddev/dbml-parser/issues",
                 "source": "https://github.com/jameswilddev/dbml-parser/tree/master"
             },
-            "time": "2021-05-16T19:31:23+00:00"
+            "time": "2021-05-17T21:33:43+00:00"
         },
         {
             "name": "laravel/framework",

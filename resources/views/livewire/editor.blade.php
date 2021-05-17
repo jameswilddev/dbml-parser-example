@@ -12,22 +12,26 @@
                 <li>
                     @switch (get_class($token))
                         @case(JamesWildDev\DBMLParser\Tokenization\Logging\TokenEvent::class)
-                            Token "{{ $token->content }}" on line {{ $token->line }} between columns {{ $token->startColumn }} and {{ $token->endColumn }}.
-                            @break
-                        @case(JamesWildDev\DBMLParser\Tokenization\Logging\LineCommentEvent::class)
-                            Line comment "{{ $token->content }}" on line {{ $token->line }} between columns {{ $token->startColumn }} and {{ $token->endColumn }}.
-                            @break
-                        @case(JamesWildDev\DBMLParser\Tokenization\Logging\WhiteSpaceEvent::class)
-                            White space {{ json_encode($token->content) }} between line {{ $token->startLine }}, column {{ $token->startColumn }} and line {{ $token->endLine }}, column {{ $token->endColumn }}.
-                            @break
-                        @case(JamesWildDev\DBMLParser\Tokenization\Logging\StringLiteralEvent::class)
-                            String literal {{ json_encode($token->content) }} between line {{ $token->startLine }}, column {{ $token->startColumn }} and line {{ $token->endLine }}, column {{ $token->endColumn }}.
-                            @break
-                        @case(JamesWildDev\DBMLParser\Tokenization\Logging\UnknownEvent::class)
-                            Unknown content {{ json_encode($token->content) }} between line {{ $token->startLine }}, column {{ $token->startColumn }} and line {{ $token->endLine }}, column {{ $token->endColumn }}.
-                            @break
-                        @case(JamesWildDev\DBMLParser\Tokenization\Logging\BacktickStringLiteralEvent::class)
-                            Backtick string literal {{ json_encode($token->content) }} on between line {{ $token->startLine }}, column {{ $token->startColumn }} and line {{ $token->endLine }}, column {{ $token->endColumn }}.
+                            @switch ($token->type)
+                                @case(JamesWildDev\DBMLParser\Tokenization\TokenType::KEYWORD_SYMBOL_OR_IDENTIFIER)
+                                    Token "{{ $token->content }}" between line {{ $token->startLine }}, column {{ $token->startColumn }} and line {{ $token->endLine }}, column {{ $token->endColumn }}.
+                                    @break
+                                @case(JamesWildDev\DBMLParser\Tokenization\TokenType::LINE_COMMENT)
+                                    Line comment "{{ $token->content }}" between line {{ $token->startLine }}, column {{ $token->startColumn }} and line {{ $token->endLine }}, column {{ $token->endColumn }}.
+                                    @break
+                                @case(JamesWildDev\DBMLParser\Tokenization\TokenType::WHITE_SPACE)
+                                    White space {{ json_encode($token->content) }} between line {{ $token->startLine }}, column {{ $token->startColumn }} and line {{ $token->endLine }}, column {{ $token->endColumn }}.
+                                    @break
+                                @case(JamesWildDev\DBMLParser\Tokenization\TokenType::STRING_LITERAL)
+                                    String literal {{ json_encode($token->content) }} between line {{ $token->startLine }}, column {{ $token->startColumn }} and line {{ $token->endLine }}, column {{ $token->endColumn }}.
+                                    @break
+                                @case(JamesWildDev\DBMLParser\Tokenization\TokenType::UNKNOWN)
+                                    Unknown content {{ json_encode($token->content) }} between line {{ $token->startLine }}, column {{ $token->startColumn }} and line {{ $token->endLine }}, column {{ $token->endColumn }}.
+                                    @break
+                                @case(JamesWildDev\DBMLParser\Tokenization\TokenType::BACKTICK_STRING_LITERAL)
+                                    Backtick string literal {{ json_encode($token->content) }} on between line {{ $token->startLine }}, column {{ $token->startColumn }} and line {{ $token->endLine }}, column {{ $token->endColumn }}.
+                                    @break
+                            @endswitch
                             @break
                         @case(JamesWildDev\DBMLParser\Tokenization\Logging\EndOfFileEvent::class)
                             End of file on line {{ $token->line }}, column {{ $token->column }}.
@@ -38,27 +42,34 @@
         </ul>
     </div>
     <div class="w-96 h-full flex flex-col flex-shrink-0">
-        <div class="text-center py-3">Pseudo-highlighted</div>
+        <div class="text-center py-3">Highlighted</div>
         <div class="text-0 overflow-y-auto flex-grow">
             @foreach ($tokens as $token)
                 @switch (get_class($token))
                     @case(JamesWildDev\DBMLParser\Tokenization\Logging\TokenEvent::class)
-                        <span class="text-blue text-base border">{{ $token->content }}</span>
+                        @switch ($token->type)
+                            @case(JamesWildDev\DBMLParser\Tokenization\TokenType::KEYWORD_SYMBOL_OR_IDENTIFIER)
+                                <span class="text-blue text-base border">{{ $token->raw }}</span>
+                                @break
+                            @case(JamesWildDev\DBMLParser\Tokenization\TokenType::LINE_COMMENT)
+                                <span class="text-grey text-base border">{{ $token->raw }}</span>
+                                @break
+                            @case(JamesWildDev\DBMLParser\Tokenization\TokenType::WHITE_SPACE)
+                                <span class="whitespace-pre text-base border">{{ $token->raw }}</span>
+                                @break
+                            @case(JamesWildDev\DBMLParser\Tokenization\TokenType::STRING_LITERAL)
+                                <span class="whitespace-pre text-green text-base border">{{ $token->raw }}</span>
+                                @break
+                            @case(JamesWildDev\DBMLParser\Tokenization\TokenType::UNKNOWN)
+                                <span class="text-red text-base border">{{ $token->raw }}</span>
+                                @break
+                            @case(JamesWildDev\DBMLParser\Tokenization\TokenType::BACKTICK_STRING_LITERAL)
+                                <span class="text-purple text-base border">{{ $token->raw }}</span>
+                                @break
+                        @endswitch
                         @break
-                    @case(JamesWildDev\DBMLParser\Tokenization\Logging\LineCommentEvent::class)
-                        <span class="text-grey text-base border">//{{ $token->content }}</span>
-                        @break
-                    @case(JamesWildDev\DBMLParser\Tokenization\Logging\WhiteSpaceEvent::class)
-                        <span class="whitespace-pre text-base border">{{ $token->content }}</span>
-                        @break
-                    @case(JamesWildDev\DBMLParser\Tokenization\Logging\StringLiteralEvent::class)
-                        <span class="whitespace-pre text-green text-base border">&apos;{{ $token->content }}&apos;</span>
-                        @break
-                    @case(JamesWildDev\DBMLParser\Tokenization\Logging\UnknownEvent::class)
-                        <span class="text-red text-base border">{{ $token->content }}</span>
-                        @break
-                    @case(JamesWildDev\DBMLParser\Tokenization\Logging\BacktickStringLiteralEvent::class)
-                        <span class="text-purple text-base border">`{{ $token->content }}`</span>
+                    @case(JamesWildDev\DBMLParser\Tokenization\Logging\EndOfFileEvent::class)
+                        End of file on line {{ $token->line }}, column {{ $token->column }}.
                         @break
                 @endswitch
             @endforeach
