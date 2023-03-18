@@ -13,7 +13,7 @@
         "jameswilddev/dbml-parser": "dev-master",
         "laravel/framework": "8.41.0",
         "laravel/tinker": "2.6.1",
-        "livewire/livewire": "2.4.4"
+        "livewire/livewire": "2.12.3"
     },
     "require-dev": {
         "facade/ignition": "2.9.0",
