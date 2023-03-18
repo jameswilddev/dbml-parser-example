@@ -12,7 +12,7 @@
         "guzzlehttp/guzzle": "7.3.0",
         "jameswilddev/dbml-parser": "dev-master",
         "laravel/framework": "8.41.0",
-        "laravel/tinker": "2.6.1",
+        "laravel/tinker": "2.8.1",
         "livewire/livewire": "2.4.4"
     },
     "require-dev": {
